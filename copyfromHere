@@ -1,0 +1,268 @@
+--------------------------------------C:\Users\prateek.singh4\Desktop\Angular V-15\Project\src\app\components\header
+<header>
+    <div class="container">
+        <a routerLink="/" class="logo">Home</a>
+        <nav>
+            <ul>
+                <li>
+                    <a href="">Login</a>
+                </li>
+                <li class="menu-container">
+                    <a routerLink="/dashborad">Prateek</a>
+                    <div class="menu">
+                        <a routerLink="/Profile">Profile</a>
+                        <a routerLink="/Order">Profile</a>
+                        <a routerLink="/login">Profile</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="/cart">Cart <span>3</span></a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+---------------------------------------C:\Users\prateek.singh4\Desktop\Angular V-15\Project\src\app\components\header
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Navbar Container */
+header {
+    background: #1e1e1e;
+    padding: 15px 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Flexbox for Alignment */
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Logo Styling */
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Navigation Menu */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li {
+    position: relative;
+}
+
+/* Links */
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px 15px;
+    transition: all 0.3s ease;
+}
+
+nav ul li a:hover {
+    background: #333;
+    border-radius: 5px;
+}
+
+/* Dropdown Menu */
+.menu-container:hover .menu {
+    display: block;
+}
+
+.menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #333;
+    min-width: 150px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.menu a {
+    display: block;
+    padding: 10px;
+    color: #fff;
+}
+
+.menu a:hover {
+    background: #555;
+}
+
+/* Cart Styling */
+nav ul li a span {
+    background: red;
+    color: #fff;
+    padding: 5px 8px;
+    border-radius: 50%;
+    font-size: 14px;
+    margin-left: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------C:\Users\prateek.singh4\Desktop\Angular V-15\Project\src\app\services
+food.sevices.ts
+,,,,,,,,,,,,,,,,,,,
+import { Injectable } from '@angular/core';
+import { Food } from '../shared/model/Food';
+import { sample_foods } from 'src/data';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class FoodService {
+
+  constructor() { }
+
+  getAll():Food[]{
+    return sample_foods;
+  }
+}
+
+
+
+
+--------------------------------------
+C:\Users\prateek.singh4\Desktop\Angular V-15\Project\src\app\shared\model\Food.ts
+
+export class Food{
+    id!:string;
+    name!: string;
+    price!:number;
+    tags?:string[];
+    favorite!:boolean;
+    stars!:number;
+    imageUrl!:string;
+    origins!:string[];
+    cookTime!:string;
+
+}
+
+
+
+
+
+
+
+
+------------------------------------------
+
+data.ts
+--------------------------------------
+import { Food } from "./app/shared/model/Food";
+
+export const sample_foods:Food[]=[
+
+{
+    id: '1',
+    name: 'Pizza Pepperoni',
+    cookTime: '10-20',
+    price: 10,
+    favorite: false,
+    origins: ['italy'],
+    stars: 4.5,
+    imageUrl: 'assets/food-1.jpg',
+    tags: ['FastFood','Pizza','Lunch']
+},
+{
+        id: '2',
+        name: 'Burger Deluxe',
+        cookTime: '15-25',
+        price: 8,
+        favorite: true,
+        origins: ['USA'],
+        stars: 4.2,
+        imageUrl: 'assets/food-2.jpg',
+        tags: ['FastFood', 'Burger', 'Dinner']
+    },
+    {
+        id: '3',
+        name: 'Sushi Roll',
+        cookTime: '5-15',
+        price: 12,
+        favorite: false,
+        origins: ['Japan'],
+        stars: 4.7,
+        imageUrl: 'assets/food-3.jpg',
+        tags: ['Healthy', 'Seafood', 'Lunch']
+    },
+    {
+        id: '4',
+        name: 'Pasta Alfredo',
+        cookTime: '20-30',
+        price: 14,
+        favorite: true,
+        origins: ['Italy'],
+        stars: 4.6,
+        imageUrl: 'assets/food-4.jpg',
+        tags: ['Pasta', 'Dinner', 'Italian']
+    },
+    {
+        id: '5',
+        name: 'Taco Fiesta',
+        cookTime: '10-20',
+        price: 9,
+        favorite: false,
+        origins: ['Mexico'],
+        stars: 4.3,
+        imageUrl: 'assets/food-5.jpg',
+        tags: ['Mexican', 'Lunch', 'Spicy']
+    },
+    {
+        id: '6',
+        name: 'Butter Chicken',
+        cookTime: '25-35',
+        price: 15,
+        favorite: true,
+        origins: ['India'],
+        stars: 4.8,
+        imageUrl: 'assets/food-6.jpg',
+        tags: ['Indian', 'Dinner', 'Spicy']
+    },
+    {
+        id: '7',
+        name: 'Pad Thai',
+        cookTime: '15-25',
+        price: 11,
+        favorite: false,
+        origins: ['Thailand'],
+        stars: 4.5,
+        imageUrl: 'assets/food-7.jpg',
+        tags: ['Noodles', 'Asian', 'Lunch']
+    },
+    {
+        id: '8',
+        name: 'Greek Salad',
+        cookTime: '5-10',
+        price: 7,
+        favorite: true,
+        origins: ['Greece'],
+        stars: 4.4,
+        imageUrl: 'assets/food-8.jpg',
+        tags: ['Salad', 'Healthy', 'Mediterranean']
+    }
+    
+];
